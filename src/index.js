@@ -24,7 +24,7 @@ function startTimer(uid, id, interval, now) {
   };
 }
 
-export const reducer = (state = {}, action) => {
+export function reducer(state = {}, action) {
   switch (action.type) {
     case START_TIMER:
       return {
@@ -42,7 +42,7 @@ export const reducer = (state = {}, action) => {
   }
 }
 
-export const createTimer(uid, dispatch) {
+export function createTimer(dispatch, uid) {
   let handle = null;
 
   return {
@@ -55,6 +55,7 @@ export const createTimer(uid, dispatch) {
         id,
         timer: setTimeout(() => {
           dispatch(stopTimer(uid, id, true));
+          handle = null;
           dispatch(actionCreator());
         }, interval),
       };
@@ -63,7 +64,7 @@ export const createTimer(uid, dispatch) {
     },
 
     clear: () => {
-      if (handle !== null) {
+      if (handle === null) {
         throw new Error('No timer to clear');
       }
 
