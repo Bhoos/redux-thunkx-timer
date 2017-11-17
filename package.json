@@ -1,6 +1,6 @@
 {
   "name": "redux-thunkx-timer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A controlled timeout based action dispatcher for redux",
   "main": "__dist__/index.js",
   "files": [
