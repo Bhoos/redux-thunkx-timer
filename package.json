@@ -3,8 +3,15 @@
   "version": "1.0.0",
   "description": "A controlled timeout based action dispatcher for redux",
   "main": "__dist__/index.js",
+  "files": [
+    "__dist__"
+  ],
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "babel src --out-dir __dist__ --ignore node_modules,__tests__",
+    "lint": "eslint src",
+    "clean": "rimraf __dist__",
+    "prepublish": "npm run lint && npm run test && npm run clean && npm run build"
   },
   "repository": {
     "type": "git",
